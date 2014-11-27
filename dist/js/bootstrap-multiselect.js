@@ -107,6 +107,9 @@
         this.options.onDropdownShown = $.proxy(this.options.onDropdownShown, this);
         this.options.onDropdownHidden = $.proxy(this.options.onDropdownHidden, this);
         
+        if(this.options.selectedTop) {
+            $('option:selected', this.$select).prependTo(this.$select);
+        }
         // Build select all if enabled.
         this.buildContainer();
         this.buildButton();
@@ -451,9 +454,6 @@
                     return false;
                 }
             }, this));
-            $('li input:checked').each($.proxy(function(index, element){
-              $(element).closet('li').prepend(this.$ul);
-            });
             $('li a', this.$ul).on('touchstart click', function(event) {
                 event.stopPropagation();
 
