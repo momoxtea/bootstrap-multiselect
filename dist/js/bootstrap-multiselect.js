@@ -234,6 +234,7 @@
             buttonContainer: '<div class="btn-group" />',
             dropRight: false,
             selectedClass: 'active',
+            selectedTop: false,
             // Maximum height of the dropdown menu.
             // If maximum height is exceeded a scrollbar will be displayed.
             maxHeight: false,
@@ -450,7 +451,9 @@
                     return false;
                 }
             }, this));
-
+            $('li input:checked').each($.proxy(function(index, element){
+              $(element).closet('li').prepend(this.$ul);
+            });
             $('li a', this.$ul).on('touchstart click', function(event) {
                 event.stopPropagation();
 
